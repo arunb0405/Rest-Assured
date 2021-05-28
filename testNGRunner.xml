@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="ApiSuite">
+    <parameter name="maxTestVal"  value="25"/>
+    <parameter name="uname"  value="admin"/>
+    <parameter name="pwd"  value="password"/>
+    <test name="ApiTest">
+        <classes>
+            <class name="TopResultApi_Test" />
+        </classes>
+    </test>
+</suite>
