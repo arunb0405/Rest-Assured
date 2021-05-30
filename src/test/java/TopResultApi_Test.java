@@ -23,10 +23,10 @@ public class TopResultApi_Test {
         return data;
     }
 
-    @Parameters({"maxTestVal", "uname", "pwd"})
+    @Parameters({"maxTestVal", "uname", "pwd","baseUrl"})
     @BeforeTest
-    public void BefTestMethod(String testValue, String uname, String pwd) {
-        RestAssured.baseURI = "http://localhost:8080";
+    public void BefTestMethod(String testValue, String uname, String pwd, String baseUrl) {
+        RestAssured.baseURI = baseUrl;
         this.Username = uname;
         this.Passwd = pwd;
 
@@ -100,8 +100,6 @@ public class TopResultApi_Test {
     }
 
     private Response getApiResponse(String uname, String pwd, int count) {
-        RestAssured.baseURI = "http://localhost:8080";
-
         Response rsp = given().auth()
                 .preemptive()
                 .basic(uname, pwd)
