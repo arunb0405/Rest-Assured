@@ -5,7 +5,7 @@ Java SDK 1.8 (Version 8) and Maven should be installed in the system.
 # rest-assured
 
 To run the tests in local / CI,
-1.) git clone https://github.com/arunb0405/rest-assured-bdd.git 
+1.) git clone https://github.com/arunb0405/rest-assured.git 
 2.) cd rest-assured-bdd
 3.) Configure 'MaxTestVal' in testngRunner.xml before running test and change the content text to any desired values
 By default, a value is given.
