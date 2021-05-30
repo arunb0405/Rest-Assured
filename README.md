@@ -6,11 +6,11 @@ Java SDK 1.8 (Version 8) and Maven should be installed in the system.
 
 To run the tests in local / CI,
 1.) git clone https://github.com/arunb0405/rest-assured.git 
-2.) cd rest-assured-bdd
+2.) cd rest-assured
 3.) Configure 'MaxTestVal' in testngRunner.xml before running test and change the content text to any desired values
 By default, a value is given.
 4.) mvn clean install test (from command line)
-5.) The Test NG Emailable report is generated in "rest-assured-bdd\target\surefire-reports\emailable-report.html" 
+5.) The Test NG Emailable report is generated in "rest-assured\target\surefire-reports\emailable-report.html" 
 
 Run the tests from IntelliJ -> Right-click and run the Test NG runner file.
 
