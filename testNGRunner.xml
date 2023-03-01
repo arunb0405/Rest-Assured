@@ -3,7 +3,8 @@
     <parameter name="maxTestVal"  value="5"/>
     <parameter name="uname"  value="admin"/>
     <parameter name="pwd"  value="password"/>
-    <parameter name="baseUrl"  value="http://localhost:8080"/>
+    <parameter name="baseUrl"  value="https://catfact.ninja"/>
+    <parameter name="petTestUrl"  value="https://petstore.swagger.io/v2"/>
     <test name="ApiTest">
         <classes>
             <class name="TopResultApi_Test" />

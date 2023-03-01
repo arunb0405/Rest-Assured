@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "fact",
+    "length"
+  ],
+  "properties": {
+    "fact": {
+      "type": "string",
+      "default": "",
+      "title": "The fact Schema",
+      "examples": [
+        "Cats bury their feces to cover their trails from predators."
+      ]
+    },
+    "length": {
+      "type": "integer",
+      "default": 0,
+      "title": "The length Schema",
+      "examples": [
+        59
+      ]
+    }
+  }
+}
