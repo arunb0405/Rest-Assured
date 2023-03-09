@@ -1,4 +1,6 @@
 
+Please switch to 'dev' branch ..
+
 Pre-requisite for running tests - Start the end-point at 'http://localhost:8080/swagger-ui.html'
 Java SDK 1.8 (Version 8) and Maven should be installed in the system.
 
