@@ -22,43 +22,29 @@ public class TopResultApi_Test {
     private String Username, Passwd;
     int randomNum;
 
-    @Parameters({"uname", "pwd", "baseUrl"})
+    @Parameters({"uname", "pwd"})
     @BeforeTest
-    public void BefTestMethod(String uname, String pwd, String baseUrl) {
+    public void BefTestMethod(String uname, String pwd) {
         randomNum = (int) (Math.random() * (500 - 100 + 1) + 100);
-        RestAssured.baseURI = baseUrl;
         this.Username = uname;
         this.Passwd = pwd;
-
-        Response rsp = getApiResult(baseUrl);
-        JsonPath jpath = new JsonPath(rsp.asString());
-
-        System.out.println("BEFORE TEST The FACT is -" + jpath.getString("fact"));
-
-//        JSONObject jo = new JSONObject(jsonRespAsString);
-//        System.out.println("Response Body Size -" + jo.length());
-//        maxCount = jo.length();
     }
 
     @Parameters({"baseUrl"})
     @Test
-    public void GetTopResultsApi_Test(String testUrl) {
+    public void GetApi_Test(String testUrl) {
         Response rsp = getApiResult(testUrl);
-        Assert.assertEquals(rsp.statusCode(), 200, "Response Test FAILED");
-        JsonPath jpath; //= new JsonPath(rsp.asString());
+        JsonPath jpath;
         jpath = rsp.jsonPath();
 
         System.out.println("PRETTY Printing JSON object" + jpath.prettyPrint());
-//        System.out.println("Inside Test - Response Body Length is -" + jpath.get("length"));
-//        System.out.println("Inside Test - The FACT is -" + jpath.get("fact"));
-
-
+        System.out.println("Inside Test - The FACT is -" + jpath.get("fact"));
         ResponseBody body = rsp.getBody();
         System.out.println("Response Body is: " + body.asString());
 
-        // By using the ResponseBody.asString() method, we can convert the  body
-        // into the string representation.
-
+        String bodyObj = body.asString();
+        Assert.assertEquals(rsp.statusCode(), 200, "Response Test FAILED");
+        Assert.assertTrue(bodyObj.contains("fact"),"It contains fact Key");
     }
 
         /*
@@ -116,14 +102,6 @@ public class TopResultApi_Test {
         jpath = rsp.jsonPath();
 
         System.out.println("PRETTY Printing JSON object" + jpath.prettyPrint());
-//        System.out.println("Inside Test - Response Body Length is -" + jpath.get("length"));
-//        System.out.println("Inside Test - The FACT is -" + jpath.get("fact"));
-
-//        ResponseBody body = rsp.getBody();
-//        System.out.println("Response Body is: " + body.asString());
-
-        // By using the ResponseBody.asString() method, we can convert the  body
-        // into the string representation.
     }
 
     @Parameters({"petTestUrl"})
@@ -167,20 +145,6 @@ public class TopResultApi_Test {
                 .assertThat().body(matchesJsonSchemaInClasspath("products-schema.json"));
     }
 
-    /*
-    private Response getApiResponse(String uname, String pwd, int count) {
-        Response rsp = given().auth()
-                .preemptive()
-                .basic(uname, pwd)
-                .header("Content-Type", "application/json")
-                .get("/getTopResultsApi?count=" + count)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract().response();
-
-        return rsp;
-    } */
-
     Response getApiResult(String url) {
         Response rsp = given().baseUri(url)
                 .header("Content-Type", "application/json")
@@ -189,7 +153,7 @@ public class TopResultApi_Test {
                 .then()
                 .contentType(ContentType.JSON)
                 .assertThat()
-                .statusCode(200 )
+                .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("cat-schema.json"))
                 .extract().response();
 
